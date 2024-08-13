@@ -1,0 +1,17 @@
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 900px;
+  width: 100%;
+  background-color: beige;
+}
+
+.bar-chart-1 {
+  background-color: orange;
+}
+
+.bar-chart-2 {
+  background-color: red;
+}
