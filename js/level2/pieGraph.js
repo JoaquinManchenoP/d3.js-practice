@@ -58,14 +58,8 @@ Object.keys(data).forEach((key, i) => {
 
 const pie = d3.pie().value((d) => d.value);
 
-// Visualize the pie layout
-console.log("Pie layout defined:", pie);
-
 // Step 2: Define the arc generator
 const arc = d3.arc().innerRadius(0).outerRadius(radius);
-
-// Visualize the arc generator
-console.log("Arc generator defined:", arc);
 
 // Step 3: Convert data to an array of objects
 const dataArray = Object.keys(data).map((key) => ({ key, value: data[key] }));
@@ -104,3 +98,41 @@ arcs
   .attr("font-family", "Arial")
   .attr("text-anchor", "middle")
   .text((d) => d.data.key);
+
+const updatePieGraph = () => {
+  console.log("Updating pie graph...");
+  const newData = {
+    Apples: 40,
+    Bananas: 30,
+    Berries: 52,
+    Grapes: 22,
+    Lemons: 50,
+    Oranges: 60,
+    pineapples: 70,
+  };
+  const newDataArray = Object.keys(newData).map((key) => ({
+    key,
+    value: newData[key],
+  }));
+  console.log("New data array:", newDataArray);
+  const arcs = svg.selectAll(".arc").data(pie(newDataArray), (d) => d.data.key);
+
+  // if the elements are the same but the values are updated the enter() is not needed, it looks for new elements only
+  const enterArcs = arcs.enter().append("g").attr("class", "arc");
+
+  const mergedArcs = enterArcs.merge(arcs);
+
+  console.log("Merged arcs:", mergedArcs.size());
+
+  mergedArcs
+    .append("path")
+    .attr("fill", (d) => color(d.data.key))
+    .each(function (d) {
+      this._current = d;
+      console.log("Appending path for enter or update selection:", this);
+    });
+};
+
+document
+  .getElementById("updatePieGraph")
+  .addEventListener("click", updatePieGraph);
