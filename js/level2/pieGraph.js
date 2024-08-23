@@ -124,7 +124,7 @@ const updatePieGraph = () => {
 
   console.log("Merged arcs:", mergedArcs.size());
 
-  mergedArcs
+  enterArcs
     .append("path")
     .attr("fill", (d) => color(d.data.key))
     .each(function (d) {
