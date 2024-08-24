@@ -1,10 +1,21 @@
 .level-3-container {
   height: 800px;
   width: 800px;
-  background-color: beige;
+  background-color: lightgray;
 }
 
 .update-button {
+  height: 30px;
+  width: 100px;
+  background-color: lightblue;
+  font-size: large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.revert-button {
   height: 30px;
   width: 100px;
   background-color: lightblue;
